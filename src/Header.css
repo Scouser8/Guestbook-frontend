@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  padding: 5px;
+  height: 10vh;
+  position: sticky;
+  top: 500;
+}
+
+.header__logo {
+  object-fit: contain;
+}
