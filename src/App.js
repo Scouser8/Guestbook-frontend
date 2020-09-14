@@ -4,6 +4,7 @@ import Login from "./Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import Register from "./Register";
+import Home from "./Home";
 
 function App() {
   const user = 1;
@@ -13,7 +14,7 @@ function App() {
       <div className="app">
         <Switch>
           <Route exact path="/">
-            {user ? <Header /> : <Login />}
+            {user ? <> <Header /> <Home/> </>: <Login />}
           </Route>
           <Route path="/login">
             <Login />

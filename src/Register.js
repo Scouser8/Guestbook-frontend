@@ -19,7 +19,7 @@ function Register() {
     e.preventDefault();
     e.target.reset();
     console.log(formData);
-    axios.post('/user/register', formData);
+    axios.post("/user/register", formData);
   };
   return (
     <div className="register">
