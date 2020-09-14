@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Form } from "react-bootstrap";
+import axios from "./axios";
 
 function Login() {
   const [formData, updateFormData] = useState({
@@ -16,6 +17,7 @@ function Login() {
     e.preventDefault();
     e.target.reset();
     console.log(formData);
+    axios.post("/user/login", formData);
   };
   return (
     <div className="login">

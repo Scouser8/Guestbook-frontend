@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import "./Register.css";
+import axios from "./axios";
 
 function Register() {
   const [formData, updateFormData] = useState({
@@ -18,6 +19,7 @@ function Register() {
     e.preventDefault();
     e.target.reset();
     console.log(formData);
+    axios.post('/user/register', formData);
   };
   return (
     <div className="register">
