@@ -1,9 +1,10 @@
 .header {
   display: flex;
   padding: 5px;
-  height: 10vh;
+  height: 30vh;
   position: sticky;
   top: 500;
+  justify-content: center;
 }
 
 .header__logo {

@@ -1,66 +1,91 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
-import axios from './axios'
+import axios from "./axios";
 
 function Home() {
-    //track the reply content
-  const [input, setInput] = useState("");
+  //track the reply content
+  const [replyInput, setReplyInput] = useState("");
+  //track the reply content
+  const [messageInput, setMessageInput] = useState("");
 
+  useEffect(() => {
+    axios.get("").then((res) => {
+      console.log(res);
+    });
+  }, []);
+
+  //
   const addReply = (e) => {
-    let reply = input;
+    let reply = replyInput;
     e.preventDefault();
     alert(reply);
     e.target.reset();
-    setInput("");
+    setReplyInput("");
+  };
+
+  const addMessage = (e) => {
+    let newMessage = {
+      content: messageInput,
+      user_id:""
+    };
+    e.preventDefault();
+    e.target.reset();
+    setMessageInput("");
+    axios.post("/message/123/add", newMessage).then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
     <div className="home">
       <div className="home__messageSection">
-        <p>Anyone here?</p>
+        <p className="home__message">Anyone here?</p>
         <form onSubmit={addReply} action="">
           <input
+            contenteditable="true"
             className="home__replyInput"
             placeholder="reply to this message"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setReplyInput(e.target.value)}
           />
           <button type="submit" className="home__replyBtn"></button>
         </form>
-        <p>Anyone here?</p>
+        <p className="home__message">Anyone here?</p>
         <form onSubmit={addReply} action="">
           <input
             className="home__replyInput"
             placeholder="reply to this message"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setReplyInput(e.target.value)}
           />
           <button type="submit" className="home__replyBtn"></button>
         </form>
-        <p>Anyone here?</p>
+        <p className="home__message">Anyone here?</p>
         <form onSubmit={addReply} action="">
           <input
             className="home__replyInput"
             placeholder="reply to this message"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setReplyInput(e.target.value)}
           />
           <button type="submit" className="home__replyBtn"></button>
         </form>
-        <p>Anyone here?</p>
+        <p className="home__message">Anyone here?</p>
         <form onSubmit={addReply} action="">
           <input
             className="home__replyInput"
             placeholder="reply to this message"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setReplyInput(e.target.value)}
           />
           <button type="submit" className="home__replyBtn"></button>
         </form>
 
-        <form className="home__messageForm" onSubmit={addReply} action="">
+        <form className="home__messageForm" onSubmit={addMessage} action="">
           <input
             className="home__messageInput"
             placeholder="Enter a new message"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setMessageInput(e.target.value)}
           />
-          <button type="submit" className="home__messageBtn">Post</button>
+          <button type="submit" className="home__messageBtn">
+            Post
+          </button>
         </form>
       </div>
     </div>

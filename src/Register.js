@@ -5,10 +5,10 @@ import axios from "./axios";
 
 function Register() {
   const [formData, updateFormData] = useState({
-    userName: "",
+    user_name: "",
     password: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
   });
 
   const handleInputChange = (e) => {
@@ -19,7 +19,9 @@ function Register() {
     e.preventDefault();
     e.target.reset();
     console.log(formData);
-    axios.post("/user/register", formData);
+    axios.post("/user/register", formData).then((res) => {
+      console.log(res.data);
+    });
   };
   return (
     <div className="register">
@@ -27,15 +29,12 @@ function Register() {
         <Form.Group controlId="formBasicEmail">
           <Form.Label className="register__formLabel">User name</Form.Label>
           <Form.Control
-            name="userName"
+            name="user_name"
             type="text"
             placeholder="Set username"
             onChange={handleInputChange}
             required={true}
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -52,7 +51,7 @@ function Register() {
         <Form.Group controlId="formBasicPassword">
           <Form.Label className="register__formLabel">First Name</Form.Label>
           <Form.Control
-            name="firstName"
+            name="first_name"
             type="text"
             placeholder="Enter firstname"
             onChange={handleInputChange}
@@ -62,14 +61,14 @@ function Register() {
         <Form.Group controlId="formBasicPassword">
           <Form.Label className="register__formLabel">Last Name</Form.Label>
           <Form.Control
-            name="lastName"
+            name="last_name"
             type="text"
             placeholder="Enter lastname"
             onChange={handleInputChange}
           />
         </Form.Group>
         <button className="register__formSubmit" type="submit">
-          Submit
+          Register
         </button>
       </Form>
     </div>

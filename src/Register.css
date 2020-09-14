@@ -13,15 +13,18 @@
 
 .register__formLabel {
   font-weight: 600;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .register__formSubmit {
   background-color: royalblue;
   color: black;
-  font-weight: 600;
+  font-weight: 700;
   border: 2px solid royalblue;
   border-radius: 12px;
   width: 50%;
+  height: 40px;
+  margin-top: 5%;
   align-self: center;
 }
 

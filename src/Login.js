@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Form } from "react-bootstrap";
 import axios from "./axios";
+import { actionTypes } from "./reducer";
+import { useStateValue} from "./StateProvider";
 
 function Login() {
+  const [state, dispatch] = useStateValue();
+
   const [formData, updateFormData] = useState({
-    userName: "",
+    user_name: "",
     password: "",
   });
 
@@ -17,7 +21,14 @@ function Login() {
     e.preventDefault();
     e.target.reset();
     console.log(formData);
-    axios.post("/user/login", formData);
+    axios.post("/user/login", formData).then((res) => {
+      if (res.data === "Logged In") {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: true,
+        });
+      }
+    });
   };
   return (
     <div className="login">
@@ -26,7 +37,7 @@ function Login() {
           <Form.Group controlId="formBasicEmail">
             <Form.Label className="login__formLabel">User name</Form.Label>
             <Form.Control
-              name="userName"
+              name="user_name"
               type="text"
               placeholder="Set username"
               onChange={handleInputChange}
@@ -51,7 +62,7 @@ function Login() {
             <Form.Check type="checkbox" label="Remember me?" />
           </Form.Group>
           <button className="login__formSubmit" type="submit">
-            Submit
+            Login
           </button>
         </Form>
       </div>

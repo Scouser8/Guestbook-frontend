@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import logo from "./guestbook-logo.png";
+import logo from "./guest-book-banner.jpg";
 
 function Header() {
   return (

@@ -3,19 +3,18 @@
   margin-top: 5vh;
 }
 
+.home__message{
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .home__replyBtn {
   display: none;
 }
 
-.home__messageForm {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
 .home__messageBtn {
   width: 5%;
-  height: 5%;
   margin-left: 1%;
   border: tomato;
   background-color: tomato;
@@ -26,29 +25,25 @@
   outline: 0 !important;
 }
 
-.home__messageBtn:hover{
-    background-color: salmon;
-}
-
-.home__messageSection {
-  /* display: flex;
-      flex-direction: column; */
+.home__messageBtn:hover {
+  background-color: salmon;
 }
 
 .home__replyInput {
   border-radius: 15px;
   border: none;
-  padding: 5px;
+  padding: 8px;
   margin-bottom: 1%;
   margin-left: 1%;
   outline: none;
+  width: 30%;
 }
 
 .home__messageInput {
   border-radius: 9px;
   border: none;
-  padding: 5px;
+  padding: 10px;
   margin-top: 2%;
-  width: 20%;
+  width: 50%;
   outline: none;
 }
