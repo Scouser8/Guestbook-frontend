@@ -28,6 +28,10 @@
   align-self: center;
 }
 
+.register__formSubmit:focus {
+  outline: 0 !important;
+}
+
 .register__formSubmit:hover {
   background-color: skyblue;
 }

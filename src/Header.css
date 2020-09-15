@@ -1,12 +1,25 @@
 .header {
   display: flex;
-  padding: 5px;
-  height: 30vh;
+  height: 10vh;
   position: sticky;
-  top: 500;
-  justify-content: center;
+  justify-content: space-between;
+  background-color: snow;
 }
 
 .header__logo {
   object-fit: contain;
+  margin-left: -16%;
+}
+
+.header__userInfo {
+  display: flex;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-right: 4%;
+  align-items: center;
+}
+
+.header__username {
+  margin-left: 15px;
+  /* margin-right: 5%; */
 }

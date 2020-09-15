@@ -8,9 +8,7 @@ import Home from "./Home";
 import { useStateValue } from "./StateProvider";
 
 function App() {
-
-  const [{user}, dispatch] = useStateValue()
-
+  const [{ user }, dispatch] = useStateValue();
   return (
     <Router>
       <div className="app">
@@ -18,8 +16,7 @@ function App() {
           <Route exact path="/">
             {user ? (
               <>
-                {" "}
-                <Header /> <Home />{" "}
+                <Header user={user} /> <Home user={user} />
               </>
             ) : (
               <Login />

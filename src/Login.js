@@ -3,7 +3,7 @@ import "./Login.css";
 import { Form } from "react-bootstrap";
 import axios from "./axios";
 import { actionTypes } from "./reducer";
-import { useStateValue} from "./StateProvider";
+import { useStateValue } from "./StateProvider";
 
 function Login() {
   const [state, dispatch] = useStateValue();
@@ -22,10 +22,11 @@ function Login() {
     e.target.reset();
     console.log(formData);
     axios.post("/user/login", formData).then((res) => {
-      if (res.data === "Logged In") {
+      if (res.data !== "Wrong Password") {
+        console.log(res.data);
         dispatch({
           type: actionTypes.SET_USER,
-          user: true,
+          user: res.data,
         });
       }
     });
@@ -39,13 +40,10 @@ function Login() {
             <Form.Control
               name="user_name"
               type="text"
-              placeholder="Set username"
+              placeholder="Enter username"
               onChange={handleInputChange}
               required={true}
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
@@ -53,13 +51,10 @@ function Login() {
             <Form.Control
               name="password"
               type="password"
-              placeholder="Set username"
+              placeholder="Enter password"
               onChange={handleInputChange}
               required={true}
             />
-          </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Remember me?" />
           </Form.Group>
           <button className="login__formSubmit" type="submit">
             Login

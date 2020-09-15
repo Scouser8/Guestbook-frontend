@@ -49,7 +49,7 @@ function Register() {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label className="register__formLabel">First Name</Form.Label>
+          <Form.Label className="register__formLabel">First Name (Optional)</Form.Label>
           <Form.Control
             name="first_name"
             type="text"
@@ -59,7 +59,7 @@ function Register() {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label className="register__formLabel">Last Name</Form.Label>
+          <Form.Label className="register__formLabel">Last Name (Optional)</Form.Label>
           <Form.Control
             name="last_name"
             type="text"
