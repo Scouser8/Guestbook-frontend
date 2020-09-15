@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import axios from "./axios";
 import { actionTypes } from "./reducer";
 import { useStateValue } from "./StateProvider";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [state, dispatch] = useStateValue();
@@ -59,6 +60,9 @@ function Login() {
           <button className="login__formSubmit" type="submit">
             Login
           </button>
+          <Link to="/register">
+          <button className="login__registerBtn" type="text">Register</button>
+          </Link>
         </Form>
       </div>
     </div>

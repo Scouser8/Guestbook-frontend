@@ -3,71 +3,27 @@
   max-width: 50%;
 }
 
-.home__userMessageContainer {
-  display: flex;
-  margin-bottom: 1%;
-  margin-top: 2%;
-  align-items: center;
-}
-
-.home__username {
-  margin-left: 1%;
-}
-
-.home__messageContainer {
-  display: flex;
-  flex:0.5;
-  margin-bottom: 1%;
-  margin-top: 2%;
-}
-
-.home__message {
-  flex: 1;
-  font-weight: bold;
-  font-size: 18px;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  margin-left: 0.5%;
-  margin-right: 2%;
-  max-width: 40vw;
-  word-wrap: break-word;
-  /* margin-top: 1%; */
-}
-
-.home__replyBtn {
-  display: none;
-}
-
-.home__messageBtn {
-  width: 15%;
-  margin-left: 1%;
-  border: tomato;
-  background-color: tomato;
-  border-radius: 12px;
-}
-
-.home__messageBtn:focus {
-  outline: 0 !important;
-}
-
-.home__messageBtn:hover {
-  background-color: salmon;
-}
-
-.home__replyInput {
-  border-radius: 15px;
-  border: none;
-  padding: 8px;
-  margin-bottom: 1%;
-  margin-left: 3%;
-  outline: none;
-  width: 30%;
-}
-
 .home__messageInput {
-  border-radius: 9px;
-  border: none;
-  padding: 10px;
-  margin-top: 2%;
-  width: 50%;
-  outline: none;
-}
+    border-radius: 9px;
+    border: none;
+    padding: 10px;
+    margin-top: 2%;
+    width: 50%;
+    outline: none;
+  }
+
+  .home__messageBtn {
+    width: 15%;
+    margin-left: 1%;
+    border: tomato;
+    background-color: tomato;
+    border-radius: 12px;
+  }
+  
+  .home__messageBtn:focus {
+    outline: 0 !important;
+  }
+  
+  .home__messageBtn:hover {
+    background-color: salmon;
+  }

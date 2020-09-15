@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import "./Register.css";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 function Register() {
   const [formData, updateFormData] = useState({
@@ -71,6 +72,11 @@ function Register() {
           Register
         </button>
       </Form>
+      <Link to="/">
+        <button className="register__loginBtn" type="submit">
+          Back to Login
+        </button>
+        </Link>
     </div>
   );
 }
