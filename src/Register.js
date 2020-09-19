@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import "./Register.css";
 import axios from "./axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Register() {
   const [formData, updateFormData] = useState({
@@ -12,17 +12,27 @@ function Register() {
     last_name: "",
   });
 
+  let history = useHistory();
+
   const handleInputChange = (e) => {
     updateFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const confirmRegistration = (e) => {
+  const confirmRegistration = async (e) => {
     e.preventDefault();
-    e.target.reset();
+    let e_target = e.target;
     console.log(formData);
-    axios.post("/user/register", formData).then((res) => {
-      console.log(res.data);
+    await axios.post("/user/register", formData).then((res) => {
+      if (res.data === "Invalid") {
+        alert("username already exists.");
+      } else if (res.data === "Error") {
+        alert("An error occured, couldn't create your new account.");
+      } else {
+        alert("New account created, welcome to guestbook community :)");
+        history.push("/");
+      }
     });
+    e_target.reset();
   };
   return (
     <div className="register">
@@ -35,6 +45,7 @@ function Register() {
             placeholder="Set username"
             onChange={handleInputChange}
             required={true}
+            autoFocus
           />
         </Form.Group>
 
@@ -50,7 +61,9 @@ function Register() {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label className="register__formLabel">First Name (Optional)</Form.Label>
+          <Form.Label className="register__formLabel">
+            First Name (Optional)
+          </Form.Label>
           <Form.Control
             name="first_name"
             type="text"
@@ -60,7 +73,9 @@ function Register() {
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label className="register__formLabel">Last Name (Optional)</Form.Label>
+          <Form.Label className="register__formLabel">
+            Last Name (Optional)
+          </Form.Label>
           <Form.Control
             name="last_name"
             type="text"
@@ -76,7 +91,7 @@ function Register() {
         <button className="register__loginBtn" type="submit">
           Back to Login
         </button>
-        </Link>
+      </Link>
     </div>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import axios from "./axios";
-import { Avatar, IconButton } from "@material-ui/core";
-import { DeleteForever, Edit } from "@material-ui/icons";
 import MessageSection from "./MessageSection";
 
 function Home({ user }) {

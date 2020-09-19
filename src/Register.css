@@ -53,6 +53,6 @@
   outline: 0 !important;
 }
 
-.register__loginBtn {
+.register__loginBtn:hover {
   background-color: limegreen;
 }

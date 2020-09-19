@@ -13,6 +13,7 @@ function MessageSection({
 }) {
   //track the reply content
   const [replyInput, setReplyInput] = useState("");
+  const [messageToEdit, setNewMessage] = useState(messageContent);
 
   //Add a new reply to the database
   const addReply = (e) => {
@@ -23,11 +24,27 @@ function MessageSection({
     setReplyInput("");
   };
 
-  const editMessage = () => {};
+  
+
+  const enableEditing = () => {
+    const message = document.getElementById(messageId);
+    message.contentEditable = true;
+    message.focus();
+  };
+
+  const editMessage = (e) => {
+    // setMessage(e.target.textContent);
+    console.log(e.keyCode);
+    if (e.keyCode === 13) {
+      const message = document.getElementById(messageId);
+      message.contentEditable = false;
+      alert(e.target.textContent);
+    }
+  };
 
   //delete message from database
   const deleteMessage = (e) => {
-    alert(messageId);
+    // alert(messageId);
     axios.delete(`/message/${messageId}/delete`).then((res) => {
       if (res.data === "Deleted") {
         alert("Message deleted");
@@ -41,13 +58,20 @@ function MessageSection({
         <h5 className="home__username">{userName}</h5>
       </div>
       <div className="home__messageContainer">
-        <p className="home__message">{messageContent}</p>
+        <p
+          id={messageId}
+          contentEditable="false"
+          className="home__message"
+          onKeyDown={editMessage}
+        >
+          {messageContent}
+        </p>
         {currentUser === msgUserId ? (
           <>
-            <IconButton onClick={editMessage} className="material-icon">
+            <IconButton className="material-icon" onClick={enableEditing}>
               <Edit />
             </IconButton>
-            <IconButton onClick={deleteMessage} className="material-icon">
+            <IconButton className="material-icon" onClick={deleteMessage}>
               <DeleteForever />
             </IconButton>
           </>
